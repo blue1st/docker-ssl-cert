@@ -1,0 +1,4 @@
+#!/bin/sh
+openssl genrsa 2048 > server.key
+openssl req -utf8 -new -key server.key -subj "/C=${COUNTROY}/ST=${STATE}/L=${LOCAL}/O=${ORGANIZATION}/OU=${UNIT}/CN=${FQDN}" > server.csr
+openssl x509 -days 3650 -req -signkey server.key < server.csr > server.crt
